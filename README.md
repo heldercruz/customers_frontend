@@ -7,7 +7,6 @@ I'm working out to use this tecnologis in this project:
 - bootstrap 4.5.2 (whithout JQuery and Popper.js) 
 - ngx_bootstrap 5.6.1 (to use "Virtual DOM" with the bootstrap);
 - font-awsome 4.7.0 (to use the large library icons);
-- ngx-bootstrap-alert 0.0.1-3 (to use message ate the browser)
 - HTML, CSS, Javascript;
 - jasper reports (with IReport);
 - Access Token;
