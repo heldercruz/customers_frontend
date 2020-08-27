@@ -3,11 +3,12 @@ The costumers_frontend is an Angular 10 web application with user authentication
 
 I'm working out to use this tecnologis in this project:
 
-- Angular 10;
-- font-awsome;
+- Angular 10.0.11;
+- bootstrap 4.5.2 (whithout JQuery and Popper.js) 
+- ngx_bootstrap 5.6.1 (to use "Virtual DOM" with the bootstrap);
+- font-awsome 4.7.0 (to use the large library icons);
+- ngx-bootstrap-alert 0.0.1-3 (to use message ate the browser)
 - HTML, CSS, Javascript;
-- bootstrap;
-- ngx_bootstrap;
 - jasper reports (with IReport);
 - Access Token;
 - conect to Rest API whith JSON Server;
