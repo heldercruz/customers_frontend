@@ -10,7 +10,8 @@ import { AppComponent } from './app.component';
 // ngx-bootstrap imports
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 // for dont refresh form
 import { FormsModule } from '@angular/forms';
@@ -53,10 +54,11 @@ import { UserModule } from './auth/login/user/user.module';
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    AlertModule.forRoot(),
     UserModule,
     FormsModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, BsModalRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
