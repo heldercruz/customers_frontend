@@ -76,33 +76,8 @@ export class AuthService {
       }
 
       get isLoogedIn(): boolean{
-        // Temporatiamente, quando implementar o login tirar
-        this.LoggerInStatus = true;
         return this.LoggerInStatus;
       }
-
-
-
-      /*
-      getUserDetails(email: string, password: string) {
-        // post these details to HTTP server return user info if correct
-        return this.http.post<ReturnRest>(this.baseUrl, {
-          email,
-          password
-        });
-      }
-      */
-/*
-     inserirCliente(cliente:Cliente):MensagemRetornoJSON{
-      let params = new URLSearchParams();
-      params.set("object",JSON.stringify(cliente));
-
-      let observable:Observable<MensagemRetornoJSON> = this.postObject(this.FRADESERVICE_API_INSERIR_CLIENTE,params);
-      observable.subscribe(r=> this._mensagem = r);
-
-      return this._mensagem;
-  }
-*/
 
       isAutenticated(user: User): Observable<ReturnJson> {
         return this.http.post<ReturnJson>(this.urlApi, user).pipe(

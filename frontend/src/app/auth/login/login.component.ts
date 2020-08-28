@@ -16,28 +16,17 @@ export class LoginComponent implements OnInit {
     profile: null
   };
 
-
-
-  constructor(private router: Router, private authService: AuthService) {
-
-  }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void { }
-/*
-  loginUser(event): void {
-    event.preventDefault();
-    const target = event.target;
-    const email = target.getElementById('inputEmail').value;
-    const password = target.getElementById('inputPassword').value;
 
-    window.alert(email);
-    console.log(email, password);
-*/
     loginUser(): void {
       this.authService.isAutenticated(this.user).subscribe(returnJson => {
         if (returnJson.success) {
+          this.authService.setLoggedIn(true);
           this.router.navigate(['/admin']);
         } else {
+           this.authService.setLoggedIn(false);
            this.authService.showMensage(returnJson.message);
         }
       });
