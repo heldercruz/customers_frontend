@@ -1,5 +1,6 @@
+import { GenericModel } from './../shared/generic.model';
 
-export interface Profile {
-    id: string;
+export interface Profile extends GenericModel {
+    id: number;
     name: string;
 }

@@ -32,9 +32,6 @@ import { AdminFooterComponent } from './admin/admin-template/admin-footer/admin-
 import { AdminHeaderComponent } from './admin/admin-template/admin-header/admin-header.component';
 import { AdminHomeComponent } from './admin/admin-component/admin-home/admin-home.component';
 
-// Module imports
-import { UserModule } from './auth/login/user/user.module';
-
 
 @NgModule({
   declarations: [
@@ -45,7 +42,7 @@ import { UserModule } from './auth/login/user/user.module';
     LoginComponent,
     AdminFooterComponent,
     AdminHeaderComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +52,6 @@ import { UserModule } from './auth/login/user/user.module';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
-    UserModule,
     FormsModule
   ],
   providers: [AuthGuard, AuthService, BsModalRef],

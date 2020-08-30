@@ -1,9 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
-// import { DomSanitizer } from '@angular/platform-browser';
-
+import { AlertModalService } from '../../shared/alert-modal.service';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +10,11 @@ import { User } from '../user.model';
   styleUrls: ['./login.component.css']
 })
 
+// inserir autenticação com Auth ou JWT
 export class LoginComponent implements OnInit {
 
   user: User = {
+    id: 0,
     email: '',
     password: '',
     profile: null
@@ -21,28 +22,28 @@ export class LoginComponent implements OnInit {
 
  constructor(
       private router: Router,
-      private authService: AuthService
+      private authService: AuthService,
+      private modal: AlertModalService
       ) { }
 
   ngOnInit(): void { }
 
     loginUser(): void {
-      this.authService.isAutenticated(this.user).subscribe({
-        next(returnJson) {
+      this.authService.isAutenticated(this.user).subscribe(
+        returnJson => {
           if (returnJson.success) {
             this.authService.setLoggedIn(true);
             this.router.navigate(['/admin']);
           } else {
             this.authService.setLoggedIn(false);
-            // Inserir modal
+            this.modal.showAlertDanger(returnJson.message);
             console.log(returnJson.message);
           }
         },
-        error(msg) {
-          console.log('Ocorreu um erro! tente novamente');
-          // Inserir modal
-          console.log('Error Getting Location: ', msg);
+        err => {
+          this.modal.showAlertDanger('Ocorreu um erro! tente novamente');
+          console.log('Error Getting Location: ', err);
         }
-      });
+      );
     }
 }
