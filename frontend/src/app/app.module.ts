@@ -23,6 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
 // for access rout /admin just with login on
 import { AuthGuard } from './auth/auth.guard';
 
+// Google tools
+import { RecaptchaModule } from 'ng-recaptcha';
+
 // components imports
 import { WebsiteHeaderComponent } from './website/website-template/website-header/website-header.component';
 import { WebsiteFooterComponent } from './website/website-template/website-footer/website-footer.component';
@@ -52,7 +55,8 @@ import { AdminHomeComponent } from './admin/admin-component/admin-home/admin-hom
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),
-    FormsModule
+    FormsModule,
+    RecaptchaModule
   ],
   providers: [AuthGuard, AuthService, BsModalRef],
   bootstrap: [AppComponent]

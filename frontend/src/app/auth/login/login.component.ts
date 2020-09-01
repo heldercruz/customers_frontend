@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import { AlertModalService } from '../../shared/alert-modal.service';
+// import { RecaptchaLoaderService } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
       private modal: AlertModalService
       ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {  }
 
     loginUser(): void {
       this.authService.isAutenticated(this.user).subscribe(
@@ -45,5 +46,8 @@ export class LoginComponent implements OnInit {
           console.log('Error Getting Location: ', err);
         }
       );
+    }
+    resolved(captchaResponse: string): void {
+      console.log(`Resolved captcha with response: ${captchaResponse}`);
     }
 }

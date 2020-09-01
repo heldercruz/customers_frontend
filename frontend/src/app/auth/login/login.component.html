@@ -1,6 +1,6 @@
 
 <div class="text-center">
-  <form class="form-signin" (ngSubmit)="loginUser()">
+  <form ngNativeValidate class="form-signin"  (ngSubmit)="loginUser()">
       <img class="mb-4" src="" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">Faça login</h1>
       <label for="inputEmail" class="sr-only">Endereço de email</label>
@@ -12,8 +12,13 @@
           <input type="checkbox" value="remember-me"> Lembrar de mim
         </label>
       </div>
+
+      <re-captcha (resolved)="resolved($event)" siteKey="6Lfh_MUZAAAAADMfvC9kMCxcpmGqBWlZPH8NNTLA" required></re-captcha>
+      <br/>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
       <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+
     </form>
   </div>
 
