@@ -16,9 +16,5 @@ export class AdminHeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  public logoff(): void {
-    this.authService.setLoggedIn(false);
-    this.router.navigate(['']);
-  }
 }
+
