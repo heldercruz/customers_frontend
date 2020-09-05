@@ -1,3 +1,5 @@
+<app-admin-header *ngIf="currentUser"></app-admin-header>
+
 <!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav">
@@ -5,7 +7,6 @@
       <a class="nav-item nav-link" (click)="logout()">Logout</a>
       <div class="current_user"  *ngIf="currentUser">
         <i class="fa fa-user-circle"></i>
-        <a class="mr-1">{{currentUser?.firstName}}</a>
       </div>
   </div>
 </nav>
@@ -14,3 +15,6 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+
+<app-admin-footer *ngIf="currentUser"></app-admin-footer>

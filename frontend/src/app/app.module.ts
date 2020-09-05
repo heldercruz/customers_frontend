@@ -35,9 +35,6 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 
 // components imports
-import { WebsiteHeaderComponent } from './website/website-template/website-header/website-header.component';
-import { WebsiteFooterComponent } from './website/website-template/website-footer/website-footer.component';
-import { WebsiteHomeComponent } from './website/website-component/website-home/website-home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AdminFooterComponent } from './admin/admin-template/admin-footer/admin-footer.component';
 import { AdminHeaderComponent } from './admin/admin-template/admin-header/admin-header.component';
@@ -48,9 +45,6 @@ import { AdminHomeComponent } from './admin/admin-component/admin-home/admin-hom
 @NgModule({
   declarations: [
     AppComponent,
-    WebsiteHeaderComponent,
-    WebsiteFooterComponent,
-    WebsiteHomeComponent,
     LoginComponent,
     AdminFooterComponent,
     AdminHeaderComponent,
