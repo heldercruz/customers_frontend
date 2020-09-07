@@ -1,20 +1,13 @@
-<app-admin-header *ngIf="currentUser"></app-admin-header>
 
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
-      <div class="current_user"  *ngIf="currentUser">
-        <i class="fa fa-user-circle"></i>
-      </div>
-  </div>
-</nav>
+<!-- Sidenav -->
+<app-admin-sidebar *ngIf="currentUser"></app-admin-sidebar>
 
 <!-- main app container -->
 <div class="container">
+  <!-- Top navbar -->
+  <app-admin-navbar *ngIf="currentUser"></app-admin-navbar>
+  <!-- Pages/Auth -->
   <router-outlet></router-outlet>
+  <!-- Footer -->
+  <app-admin-footer *ngIf="currentUser"></app-admin-footer>
 </div>
-
-
-<app-admin-footer *ngIf="currentUser"></app-admin-footer>

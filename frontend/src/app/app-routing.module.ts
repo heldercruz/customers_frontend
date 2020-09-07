@@ -3,7 +3,7 @@ import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/helpers/auth.guard';
-import { AdminHomeComponent } from './admin/admin-component/admin-home/admin-home.component';
+import { AdminHomeComponent } from './admin/admin-pages/admin-home/admin-home.component';
 
 const routes: Routes = [
   {
