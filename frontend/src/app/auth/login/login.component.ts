@@ -105,15 +105,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.loginForm = this.formBuilder.group({
-          username: ['', Validators.required],
-          password: ['', Validators.required],
-          rememberme: [''],
-          captcha: ['', Validators.required]
-      });
+    this.clearForm();
 
-      // get return url from route parameters or default to '/'
-      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
@@ -135,12 +130,12 @@ export class LoginComponent implements OnInit {
                   this.router.navigate([this.returnUrl]);
               },
               error => {
-                  this.cleanForm();
+                  this.clearForm();
                   this.modal.showAlertDanger(error);
               });
   }
 
-  private cleanForm(): void {
+  private clearForm(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -149,5 +144,13 @@ export class LoginComponent implements OnInit {
     });
     this.loading = false;
     this.submitted = false;
+  }
+
+  public goRegister(): void {
+    this.router.navigate(['/register']);
+  }
+
+  public goForgetPassword(): void {
+    this.router.navigate(['/forgetpassword']);
   }
 }

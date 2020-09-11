@@ -40,6 +40,8 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { AdminHomeComponent } from './admin/admin-pages/admin-home/admin-home.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ForgetpasswordComponent } from './auth/forgetpassword/forgetpassword.component';
 
 
 
@@ -50,7 +52,9 @@ import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.compo
     AdminFooterComponent,
     AdminHomeComponent,
     AdminNavbarComponent,
-    AdminSidebarComponent
+    AdminSidebarComponent,
+    RegisterComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,

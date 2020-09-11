@@ -1,0 +1,115 @@
+<div class="container mt-3 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-light shadow border-0">
+        <div class="card-header bg-transparent pb-3">
+          <div class="text-muted text-center mt-2 mb-3"><small>Sign up with</small></div>
+          <div class="text-center">
+            <button class="btn btn-light">
+              <i class="fab fa-facebook" style="color:#3b5998"></i>
+              <span class="ml-1">Facebook</span>
+            </button>
+            <button class="btn btn-light ml-2">
+              <i class="fab fa-google" style="color:#db4a39"></i>
+              <span class="ml-1">Google</span>
+            </button>
+          </div>
+        </div>
+        <div class="card-body px-lg-3 py-lg-3">
+          <div class="text-center text-muted mb-4">
+            <small>Or sign up with credentials</small>
+          </div>
+          <form [formGroup]="registerForm" class="form-register" autocomplete="off" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" formControlName="fistname" id="fistname"
+                class="form-control" placeholder="Your fist name"
+                required autofocus [ngClass]="{ 'is-invalid': submitted && f.fistname.errors }"/>
+                <div *ngIf="submitted && f.fistname.errors" class="invalid-feedback">
+                  <div *ngIf="f.fistname.errors.required">Fist name is required</div>
+                </div>
+                <!--<div class="invalid-feedback">Fist name is required</div>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <input type="text" formControlName="lastname" id="lastname"
+                class="form-control" placeholder="Your last name"
+                required autofocus [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"/>
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                  <div *ngIf="f.lastname.errors.required">Last name is required</div>
+                </div>
+                <!--<div class="invalid-feedback">Last name is required</div>-->
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" formControlName="username" id="username"
+                class="form-control" placeholder="Your username"
+                required autofocus [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                <!--<div class="invalid-feedback">Username is required</div>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" formControlName="password" id="password" class="form-control" placeholder="Your password" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                    <!--<div class="invalid-feedback">Password is required</div>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="passwordconfirmation" formControlName="passwordconfirmation" id="passwordconfirmation" class="form-control" placeholder="Your password confirmation" required [ngClass]="{ 'is-invalid': submitted && f.passwordconfirmation.errors }" />
+                    <div *ngIf="submitted && f.passwordconfirmation.errors" class="invalid-feedback">
+                        <div *ngIf="f.passwordconfirmation.errors.required">Password Confirmation is required</div>
+                    </div>
+                    <!--<div class="invalid-feedback">Password Confirmation is required</div>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id="customCheckRegister" type="checkbox" type="checkbox" formControlName="agreePrivacyPolicy">
+                  <label class="custom-control-label" for="customCheckRegister">
+                    <span class="text-muted">I agree with the
+                      <a href="#!">Privacy Policy</a>
+                    </span>
+                  </label>
+                </div>
+            </div>
+              <div class="form-group">
+                <re-captcha formControlName="captcha" siteKey="6Lfh_MUZAAAAADMfvC9kMCxcpmGqBWlZPH8NNTLA" required></re-captcha>
+              </div>
+            <div class="form-group text-center">
+              <button [disabled]="loading && registerForm.invalid"  class="btn btn-primary my-4">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

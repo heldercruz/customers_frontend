@@ -1,68 +1,74 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
-      <div class="row">
-        <div class="col-lg- col-md-4 mx-auto">
-          <!--<div *ngIf="error" class="alert alert-danger mt-3 mb-3">{{error}}</div>-->
-          <!-- form card login -->
-          <div class="card rounded shadow shadow-sm">
-            <div class="card-header">
-              <h3 class="mb-0">
-                <i class="fas fa-users"></i>
-                Login
-              </h3>
-            </div>
-            <div class="card-body">
-              <form [formGroup]="loginForm" class="form-signin" autocomplete="off" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="username" class="sr-only">Username</label>
-                    <input type="text" formControlName="username" id="username" class="form-control form-control-lg rounded-0" placeholder="Your username" required autofocus [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                        <div *ngIf="f.username.errors.required">Username is required</div>
-                    </div>
-                    <!--<div class="invalid-feedback">Username is required</div>-->
-                </div>
-                <div class="form-group">
-                    <label for="password" class="sr-only">Password</label>
-                    <input type="password" formControlName="password" id="password" class="form-control form-control-lg rounded-0" placeholder="Your password" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
-                    <!--<div class="invalid-feedback">Password is required</div>-->
-                </div>
-                <div class="form-group">
-                  <label class="custom-control custom-checkbox">
-                    <input type="checkbox" formControlName="rememberme" value="remember-me">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description small text-dark">  Remember me on this computer</span>
-                  </label>
-                </div>
-
-
-                <div class="form-group">
-                  <re-captcha formControlName="captcha" siteKey="6Lfh_MUZAAAAADMfvC9kMCxcpmGqBWlZPH8NNTLA" required></re-captcha>
-                </div>
-                <div class="form-group">
-                  <button [disabled]="loading && loginForm.invalid"  class="btn btn-success btn-lg float-right">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Login
-                  </button>
-                </div>
-              </form>
-            <!--/card-body-->
-            </div>
-          <!--/card-block-->
+<!-- Page content -->
+<div class="container mt-3 pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-7">
+      <div class="card bg-light shadow border-0">
+        <div class="card-header bg-transparent pb-3">
+          <div class="text-center text-muted mt-2 mb-3"><small>Sign in with</small></div>
+          <div class="text-center">
+            <button class="btn btn-light">
+              <i class="fab fa-facebook" style="color:#3b5998"></i>
+              <span class="ml-1">Facebook</span>
+            </button>
+            <button class="btn btn-light ml-2">
+              <i class="fab fa-google" style="color:#db4a39"></i>
+              <span class="ml-1">Google</span>
+            </button>
           </div>
-        <!-- /form card login -->
         </div>
-      <!--/row-->
+        <div class="card-body px-lg-3 py-lg-3">
+          <div class="text-center text-muted mb-4">
+            <small>Or sign in with credentials</small>
+          </div>
+          <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="text" formControlName="username" id="username"
+                class="form-control" placeholder="Your username"
+                required autofocus [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                <!--<div class="invalid-feedback">Username is required</div>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" formControlName="password" id="password" class="form-control"
+                placeholder="Your password" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+                    <!--<div class="invalid-feedback">Password is required</div>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="custom-control custom-control-alternative custom-checkbox">
+                <input class="custom-control-input" id=" customCheckLogin" type="checkbox" formControlName="rememberme">
+                <label class="custom-control-label" for=" customCheckLogin">
+                  <span class="text-muted">Remember me</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <re-captcha formControlName="captcha" siteKey="6Lfh_MUZAAAAADMfvC9kMCxcpmGqBWlZPH8NNTLA" required></re-captcha>
+            </div>
+            <div class="form-group text-center">
+              <button [disabled]="loading && loginForm.invalid"  class="btn btn-primary my-4">Sign in</button>
+            </div>
+          </form>
+        </div>
       </div>
-    <!--/col-->
+      <div class="row mt-1">
+        <button type="button" class="col-6 btn btn-link text-dark" (click)="goForgetPassword()"><small>Forgot password?</small></button>
+        <button type="button" class="col-6 text-right btn btn-link text-dark" (click)="goRegister()"><small>Create new account</small></button>
+      </div>
     </div>
-  <!--/row-->
   </div>
-<!--/container-->
 </div>
-
-
-
