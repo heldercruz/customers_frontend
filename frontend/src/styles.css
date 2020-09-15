@@ -3,6 +3,7 @@
 
 body {
   background-color: #d3d3d3;
+  background-image: linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,2));
   border: 0;
   margin: 0;
 }

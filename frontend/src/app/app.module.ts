@@ -5,10 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // ngx-bootstrap imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
+
 
 // for dont refresh form
 import { FormsModule } from '@angular/forms';
@@ -39,9 +42,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { AdminFooterComponent } from './admin/admin-footer/admin-footer.component';
 import { AdminHomeComponent } from './admin/admin-pages/admin-home/admin-home.component';
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
-import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ForgetpasswordComponent } from './auth/forgetpassword/forgetpassword.component';
+import { AdminNewcustomerComponent } from './admin/admin-pages/admin-newcustomer/admin-newcustomer.component';
+import { AdminListcustomersComponent } from './admin/admin-pages/admin-listcustomers/admin-listcustomers.component';
+import { AdminAccountComponent } from './admin/admin-pages/admin-account/admin-account.component';
 
 
 
@@ -52,15 +57,19 @@ import { ForgetpasswordComponent } from './auth/forgetpassword/forgetpassword.co
     AdminFooterComponent,
     AdminHomeComponent,
     AdminNavbarComponent,
-    AdminSidebarComponent,
     RegisterComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
+    AdminNewcustomerComponent,
+    AdminListcustomersComponent,
+    AdminAccountComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
+    CollapseModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot(),

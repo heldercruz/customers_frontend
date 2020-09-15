@@ -1,7 +1,7 @@
-<div class="card mt-4">
-  <h4 class="card-header">You're logged in Costumers Aplication</h4>
-  <div class="card-body">
-      <h6>Users from secure api end point</h6>
+<div class="card bg-light shadow border-0 mt-3">
+  <h4 class="card-header bg-transparent pb-3">Home</h4>
+  <div class="card-body bg-transparent pb-3">
+      <h6>User List</h6>
       <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
       <ul *ngIf="users">
           <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>

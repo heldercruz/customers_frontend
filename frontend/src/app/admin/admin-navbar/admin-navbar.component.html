@@ -1,4 +1,4 @@
-<!-- nav -->
+<!-- nav
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/">Home</a>
@@ -7,4 +7,83 @@
         <i class="fa fa-user-circle"></i>
       </div>
   </div>
+</nav> -->
+<!-- nav
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      <div class="current_user"  *ngIf="currentUser">
+        <i class="fa fa-user-circle"></i>
+      </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow border-0">
+  <a class="navbar-brand" routerLinkActive="active" [routerLink]="''">
+    <i class="far fa-handshake"></i>
+    <b> CUSTOMERS</b>
+  </a>
+
+  <button type="button" class="navbar-toggler btn btn-light"  (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse" [collapse]="isCollapsed" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <div class="btn-group" dropdown>
+          <li>
+          <button id="button-customers" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
+                  aria-controls="dropdown-customers">
+                  <i class="fas fa-user-alt"></i>
+                  <b> Customers</b>
+          </button>
+
+          <!-- Navigation -->
+          <ul id="dropdown-customers" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-customers">
+            <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} dropdown-item">
+                <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
+                    <i class="fas {{menuItem.icon}}"></i>
+                    {{menuItem.title}}
+                </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0 mr-3">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-light my-2 my-sm-0">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+
+    <div class="btn-group" dropdown>
+      <button id="button-user" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
+              aria-controls="dropdown-user">
+              <i class="fas fa-user-circle"></i>
+              <b> {{currentUser.firstName}}</b>
+      </button>
+      <ul id="dropdown-user" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-user">
+        <li role="menuitem">
+          <a class="dropdown-item" routerLinkActive="active" [routerLink]="'account'">
+            <i class="fas fa-cog"></i>
+            Account
+          </a>
+        </li>
+        <div class="dropdown-divider"></div>
+        <li role="menuitem">
+          <button type="button" class="btn btn-link dropdown-item" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Logoff
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>
+

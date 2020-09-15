@@ -1,13 +1,13 @@
 
-<!-- Sidenav -->
-<app-admin-sidebar *ngIf="currentUser"></app-admin-sidebar>
+<!-- Top navbar -->
+<app-admin-navbar *ngIf="currentUser"></app-admin-navbar>
 
 <!-- main app container -->
 <div class="container">
-  <!-- Top navbar -->
-  <app-admin-navbar *ngIf="currentUser"></app-admin-navbar>
   <!-- Pages/Auth -->
   <router-outlet></router-outlet>
-  <!-- Footer -->
-  <app-admin-footer *ngIf="currentUser"></app-admin-footer>
+
 </div>
+
+ <!-- Footer -->
+ <app-admin-footer *ngIf="currentUser"></app-admin-footer>
