@@ -1,31 +1,10 @@
-<!-- nav
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
-      <div class="current_user"  *ngIf="currentUser">
-        <i class="fa fa-user-circle"></i>
-      </div>
-  </div>
-</nav> -->
-<!-- nav
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
-      <div class="current_user"  *ngIf="currentUser">
-        <i class="fa fa-user-circle"></i>
-      </div>
-  </div>
-</nav> -->
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow border-0">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow border-0">
   <a class="navbar-brand" routerLinkActive="active" [routerLink]="''">
     <i class="far fa-handshake"></i>
     <b> CUSTOMERS</b>
   </a>
 
-  <button type="button" class="navbar-toggler btn btn-light"  (click)="isCollapsed = !isCollapsed"
+  <button type="button" class="navbar-toggler btn btn-dark"  (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,7 +13,7 @@
       <li class="nav-item">
         <div class="btn-group" dropdown>
           <li>
-          <button id="button-customers" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
+          <button id="button-customers" dropdownToggle type="button" class="btn btn-dark dropdown-toggle"
                   aria-controls="dropdown-customers">
                   <i class="fas fa-user-alt"></i>
                   <b> Customers</b>
@@ -43,8 +22,8 @@
           <!-- Navigation -->
           <ul id="dropdown-customers" *dropdownMenu class="dropdown-menu"
           role="menu" aria-labelledby="button-customers">
-            <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} dropdown-item">
-                <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
+            <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} menuitem">
+                <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="dropdown-item">
                     <i class="fas {{menuItem.icon}}"></i>
                     {{menuItem.title}}
                 </a>
@@ -56,13 +35,13 @@
 
     <form class="form-inline my-2 my-lg-0 mr-3">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-light my-2 my-sm-0">
+      <button class="btn btn-dark my-2 my-sm-0">
         <i class="fas fa-search"></i>
       </button>
     </form>
 
     <div class="btn-group" dropdown>
-      <button id="button-user" dropdownToggle type="button" class="btn btn-light dropdown-toggle"
+      <button id="button-user" dropdownToggle type="button" class="btn btn-dark dropdown-toggle"
               aria-controls="dropdown-user">
               <i class="fas fa-user-circle"></i>
               <b> {{currentUser.firstName}}</b>
