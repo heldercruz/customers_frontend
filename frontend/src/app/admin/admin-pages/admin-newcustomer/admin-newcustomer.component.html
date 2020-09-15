@@ -4,7 +4,223 @@
     <b> New Customer</b>
   </h4>
   <div class="card-body bg-transparent pb-3">
+    <div [formGroup]="customerForm" autocomplete="off" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="fistname">*First name:</label>
+          <input type="text" formControlName="fistname" id="fistname"
+          class="form-control" placeholder="Your fist name"
+          required autofocus [ngClass]="{ 'is-invalid': submitted && f.fistname.errors }"/>
+          <div *ngIf="submitted && f.fistname.errors" class="invalid-feedback">
+            <div *ngIf="f.fistname.errors.required">Fist name is required</div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="lastname">*Last name:</label>
+          <input type="text" formControlName="lastname" id="lastname" class="form-control"
+              placeholder="Your last name" required [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+            <div *ngIf="f.lastname.errors.required">Last name is required</div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="dateofbirth">*Date of birth:</label>
+          <input type="text" formControlName="dateofbirth" id="dateofbirth" class="form-control"
+              placeholder="dd/mm/yyyy" required [ngClass]="{ 'is-invalid': submitted && f.dateofbirth.errors }" />
+          <div *ngIf="submitted && f.dateofbirth.errors" class="invalid-feedback">
+            <div *ngIf="f.dateofbirth.errors.required">Date of birth is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="cpf">*CPF:</label>
+          <input type="text" formControlName="cpf" id="cpf"
+            class="form-control" placeholder="000.000.000-00"
+            required autofocus [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }"/>
+            <div *ngIf="submitted && f.cpf.errors" class="invalid-feedback">
+              <div *ngIf="f.cpf.errors.required">CPF is required</div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="rg">*RG:</label>
+          <input type="text" formControlName="rg" id="rg" class="form-control"
+              placeholder="RG" required [ngClass]="{ 'is-invalid': submitted && f.rg.errors }" />
+          <div *ngIf="submitted && f.rg.errors" class="invalid-feedback">
+            <div *ngIf="f.rg.errors.required">RG is required</div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="ssp">*SSP:</label>
+          <input type="text" formControlName="ssp" id="ssp" class="form-control"
+              placeholder="SSP" required [ngClass]="{ 'is-invalid': submitted && f.dateofbirth.errors }" />
+          <div *ngIf="submitted && f.ssp.errors" class="invalid-feedback">
+            <div *ngIf="f.ssp.errors.required">SSP is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="cpf">*Phone:</label>
+          <input type="text" formControlName="phone" id="phone"
+            class="form-control" placeholder="(00) 0000-0000"
+            required autofocus [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"/>
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+              <div *ngIf="f.phone.errors.required">Phone is required</div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="rg">*Celphone:</label>
+          <input type="text" formControlName="celphone" id="celphone" class="form-control"
+              placeholder="(00) 0000-0000" required [ngClass]="{ 'is-invalid': submitted && f.celphone.errors }" />
+          <div *ngIf="submitted && f.celphone.errors" class="invalid-feedback">
+            <div *ngIf="f.celphone.errors.required">Celphone is required</div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="genre">*Genre:</label>
+          <select class="form-control" formControlName="genre" id="genre">
+            <option>Select</option>
+            <option>Male</option>
+            <option>Feminine</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-1 mb-3">
+          <label for="state">*State:</label>
+            <select class="form-control" formControlName="state" id="state">
+              <option>Select</option>
+              <option>DF</option>
+              <option>PE</option>
+              <option>SP</option>
+              <option>RJ</option>
+            </select>
+        </div>
+        <div class="col-md-2 mb-3">
+          <label for="city">*City:</label>
+          <input type="text" formControlName="city" id="city" class="form-control"
+           placeholder="Your city" required [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+          <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+            <div *ngIf="f.city.errors.required">City is required</div>
+          </div>
+        </div>
+        <div class="col-md-5 mb-3">
+          <label for="address">*Address:</label>
+          <input type="text" formControlName="address" id="address" class="form-control"
+           placeholder="Your city" required [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+          <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+            <div *ngIf="f.address.errors.required">Address is required</div>
+          </div>
+        </div>
+        <div class="col-md-1 mb-3">
+          <label for="number">*Nº:</label>
+          <input type="text" formControlName="number" id="number" class="form-control"
+           placeholder="SN" required [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+          <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+            <div *ngIf="f.number.errors.required">Nº is required</div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">*Zip:</label>
+          <input type="text" formControlName="zip" id="zip" class="form-control"
+           placeholder="00.000.000" required [ngClass]="{ 'is-invalid': submitted && f.zip.errors }" />
+          <div *ngIf="submitted && f.zip.errors" class="invalid-feedback">
+            <div *ngIf="f.zip.errors.required">Zip is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="email">*Email:</label>
+          <input type="text" formControlName="email" id="email"
+          class="form-control" placeholder="exemple@domain.com"
+          required autofocus [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="emailconfirmation">*Email confirmation:</label>
+          <input type="text" formControlName="emailconfirmation" id="emailconfirmation" class="form-control"
+              placeholder="exemple@domain.com" required [ngClass]="{ 'is-invalid': submitted && f.emailconfirmation.errors }" />
+          <div *ngIf="submitted && f.emailconfirmation.errors" class="invalid-feedback">
+            <div *ngIf="f.emailconfirmation.errors.required">Email confirmation is required</div>
+          </div>
+        </div>
+      </div>
 
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="password">*Password:</label>
+          <input type="password" formControlName="password" id="password"
+          class="form-control" placeholder="********"
+          required autofocus [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="passwordconfirmation">*Password confirmation:</label>
+          <input type="password" formControlName="passwordconfirmation" id="passwordconfirmation"
+          class="form-control" placeholder="********"
+          required autofocus [ngClass]="{ 'is-invalid': submitted && f.passwordconfirmation.errors }"/>
+          <div *ngIf="submitted && f.passwordconfirmation.errors" class="invalid-feedback">
+            <div *ngIf="f.passwordconfirmation.errors.required">Password confirmation is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="text-muted font-italic"><small>password strength: <span class="text-success font-weight-700">strong</span></small></div>
+      </div>
+      <div class="form-group">
+        <h3>Attachments</h3>
+        <hr>
+      </div>
+      <div class="form-group">
+        <span class="lbAttachments">Official identification document with photo, front and back and legible.</span>
+      </div>
+      <div class="form-group">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="officialId" required>
+          <label class="custom-file-label" for="officialId">Choose file...</label>
+          <div class="invalid-feedback">Invalid custom file feedback</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <span class="lbAttachments">We need a photo of you (selfie) holding RG or CNH (Be careful not to cover your face).</span>
+      </div>
+      <div class="form-group">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="selfie" required>
+          <label class="custom-file-label" for="selfie">Choose file...</label>
+          <div class="invalid-feedback">Invalid custom file feedback</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <div class="custom-control custom-control-alternative custom-checkbox">
+            <input class="custom-control-input" id="customCheckRegister" type="checkbox" type="checkbox" formControlName="agreePrivacyPolicy">
+            <label class="custom-control-label" for="customCheckRegister">
+              <span class="text-muted">I agree with the
+                <a href="#">Privacy Policy</a>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <re-captcha formControlName="captcha" siteKey="6Lfh_MUZAAAAADMfvC9kMCxcpmGqBWlZPH8NNTLA" required></re-captcha>
+        </div>
+      <div class="form-group">
+        <button [disabled]="loading && customerForm.invalid"  class="btn btn-dark shadow border-0 my-4">Sign in</button>
+      </div>
   </div>
 </div>
 
+<!--
+
+() desejo receber novidades por e-mail.
+
+E fazer Upload de documento pessoal com foto
+(Anexar, Nome e Descrição.
+Aceitando pdf, doc, docx, png, jpeg, jpg com no máximo 5mb-->

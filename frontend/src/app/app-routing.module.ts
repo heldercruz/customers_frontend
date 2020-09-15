@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'newcustomers',
+    path: 'newcustomer',
     component: AdminNewcustomerComponent,
     canActivate: [AuthGuard]
   },
