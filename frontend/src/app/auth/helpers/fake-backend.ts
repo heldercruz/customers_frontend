@@ -2,10 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-
 import { User } from '../user.model';
 
-const users: User[] = [{ id: 1, username: 'test', password: 'test', firstName: 'Helder', lastName: 'Silva Cruz' }];
+const users: User[] = [{
+  id: 1,
+  username: 'test',
+  password: 'test',
+  cpfCnpj: '000000000000',
+  firstName: 'Helder',
+  lastName: 'Silva Cruz',
+  ativo: true,
+  profileId: null,
+}];
 
 
 /*
@@ -67,10 +75,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (!user) return error('Username or password is incorrect');
         return ok({
             id: user.id,
+            cpfCnpj: user.cpfCnpj,
             username: user.username,
             firstName: user.firstName,
             lastName: user.lastName,
-            token: 'fake-jwt-token'
+            token: 'fake-jwt-token',
+            ativo: user.ativo,
+            profileId: user.profileId,
         });
     }
 
