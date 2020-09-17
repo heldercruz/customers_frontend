@@ -74,5 +74,9 @@ export class RegisterComponent implements OnInit {
       captcha: ['', Validators.required]
     });
   }
+
+  public goLogin(): void {
+    this.router.navigate(['/auth']);
+  }
 }
 
