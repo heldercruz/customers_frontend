@@ -6,6 +6,6 @@ import { User } from '../auth/user.model';
 @Injectable({ providedIn: 'root' })
 export class UserService extends GenericService<User>{
   constructor(http: HttpClient) {
-    super(http, 'login');
+    super(http, 'user');
   }
 }

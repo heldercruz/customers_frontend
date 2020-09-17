@@ -7,6 +7,35 @@ import { User } from '../user.model';
 
 const users: User[] = [{ id: 1, username: 'test', password: 'test', firstName: 'Helder', lastName: 'Silva Cruz' }];
 
+
+/*
+  https://jasonwatmore.com/post/2019/06/22/angular-8-jwt-authentication-example-tutorial
+
+  In order to run and test the Angular application without a real backend API, the
+  example uses a fake backend that intercepts the HTTP requests from the Angular app
+  and send back "fake" responses. This is done by a class that implements the Angular
+  HttpInterceptor interface, for more information on Angular HTTP Interceptors see
+  https://angular.io/api/common/http/HttpInterceptor or this article.
+
+  The fake backend contains a handleRoute function that checks if the request matches
+  one of the faked routes in the switch statement, at the moment this includes POST
+  requests to the /users/authenticate route for handling authentication, and GET
+  requests to the /users route for getting all users.
+
+  Requests to the authenticate route are handled by the authenticate() function which
+  checks the username and password against an array of hardcoded users. If the username
+  and password are correct then an ok response is returned with the user details and a
+  fake jwt token, otherwise an error response is returned.
+
+  Requests to the get users route are handled by the getUsers() function which checks
+  if the user is logged in by calling the new isLoggedIn() helper function. If the user
+  is logged in an ok() response with the whole users array is returned, otherwise a 401
+  Unauthorized response is returned by calling the new unauthorized() helper function.
+
+  If the request doesn't match any of the faked routes it is passed through as a real
+  HTTP request to the backend API.
+*/
+
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -21,9 +50,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function handleRoute() {
         switch (true) {
-            case url.endsWith('/login') && method === 'POST':
+            case url.endsWith('/authenticate') && method === 'POST':
                 return authenticate();
-            case url.endsWith('/login') && method === 'GET':
+            case url.endsWith('/user') && method === 'GET':
                 return getUsers();
             default:
                 // pass through any requests not handled above
