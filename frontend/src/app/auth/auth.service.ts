@@ -15,7 +15,7 @@ export class AuthService extends GenericService<User>{
   }
 
   public login(username: string, password: string): any {
-    return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+    return this.http.post<User>(`${environment.apiUrl}/login`, { username, password })
         .pipe(map(user => {
           super.initToken(user);
         }));

@@ -5,8 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { User } from '../auth/user.model';
 
-
-const token = 'currentUser';
 /*
   The "Generic Service" is a class created to provide a default service
   to make easily to create a services for eath object that need
@@ -18,20 +16,22 @@ export class GenericService<T> {
   public currentUser: Observable<User>;
 
   protected createToken(): void {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(token)));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(null)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   // store user details and jwt token in local storage to keep user logged in between page refreshes
   protected initToken(user: User): void {
-    localStorage.setItem(token, JSON.stringify(user));
+    localStorage.setItem(user.token, JSON.stringify(user));
     this.currentUserSubject.next(user);
+    this.currentUser = this.currentUserSubject.asObservable();
   }
 
   protected clearToken(): void {
      // remove user from local storage to log user out
-     localStorage.removeItem(token);
+     localStorage.removeItem(null);
      this.currentUserSubject.next(null);
+     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): User {
@@ -39,7 +39,7 @@ export class GenericService<T> {
   }
 
   protected createTokenOptions(): any {
-    return {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem(token)}`)};
+    return {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem(null)}`)};
   }
 
   public create(record: T): Observable<ReturnJson> {
