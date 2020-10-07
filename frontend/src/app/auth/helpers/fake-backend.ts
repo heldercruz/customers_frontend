@@ -4,16 +4,16 @@ import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { User } from '../user.model';
 
+
+
 const users: User[] = [{
   id: 1,
   username: 'springuser',
   password: 'password',
-  cpfCnpj: '000000000000',
-  firstName: 'Helder',
-  lastName: 'Silva Cruz',
-  ativo: true,
   profileId: null,
 }];
+
+const token = 'fake-jwt-token';
 
 
 /*
@@ -71,18 +71,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     // route functions
 
     function authenticate() {
-        const user = users.find(x => x.username === body.username && x.password === body.password);
-        if (!user) return error('Username or password is incorrect');
-        return ok({
-            id: user.id,
-            cpfCnpj: user.cpfCnpj,
-            username: user.username,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            token: 'fake-jwt-token',
-            ativo: user.ativo,
-            profileId: user.profileId,
-        });
+        const currentuser = users.find(x => x.username === body.username && x.password === body.password);
+        if (!currentuser) return error('Username or password is incorrect');
+
+        currentuser.password = null;
+        currentuser.token = token;
+
+        return ok(currentuser);
     }
 
     function getUsers() {
@@ -105,7 +100,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 
     function isLoggedIn() {
-        return headers.get('Authorization') === 'Bearer fake-jwt-token';
+        return headers.get('Authorization') === 'Bearer ' + token;
     }
 }
 }

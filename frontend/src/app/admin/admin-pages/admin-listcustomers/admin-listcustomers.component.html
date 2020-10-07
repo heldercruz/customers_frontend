@@ -4,8 +4,8 @@
     <b> List Customers</b>
   </h4>
   <div class="card-body bg-transparent pb-3">
-
-    <table class="table table-striped">
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <table *ngIf="users" class="table table-striped">
       <thead>
         <tr>
           <th scope="col">Nome</th>
@@ -17,27 +17,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Helder Silva Cruz</td>
-          <td>(61) 3458-5555</td>
-          <td>(61) 98425-1001</td>
-          <td>heldercruzh@gmail.com</td>
-          <td><i class="fas fa-edit"></i></td>
-          <td><i class="fas fa-trash-alt"></i></td>
-        </tr>
-        <tr>
-          <td>Filipe Silva Santos</td>
-          <td>(61) 3485-2030</td>
-          <td>(61) 98425-1001</td>
-          <td>filipemx@gmail.com</td>
-          <td><i class="fas fa-edit"></i></td>
-          <td><i class="fas fa-trash-alt"></i></td>
-        </tr>
-        <tr>
-          <td>Heverton da Silva Cruz</td>
-          <td>(61) 3485-2030</td>
-          <td>(61) 98425-1001</td>
-          <td>heverton7@gmail.com</td>
+        <tr *ngFor="let user of users">
+          <td>{{user.username}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.username}}</td>
           <td><i class="fas fa-edit"></i></td>
           <td><i class="fas fa-trash-alt"></i></td>
         </tr>

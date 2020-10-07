@@ -11,11 +11,7 @@ import { Profile } from './profile.model';
 export interface User extends GenericModel {
   id: number;
   username: string;
-  password: string;
-  cpfCnpj: string;
-  firstName: string;
-  lastName: string;
   token?: string;
-  ativo: boolean;
+  password: string;
   profileId: Profile;
 }

@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-
-import { User } from '../../../auth/user.model';
-import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -11,16 +7,8 @@ import { UserService } from '../../user.service';
 })
 
 export class AdminHomeComponent implements OnInit {
-    loading = false;
-    users: User[];
 
-    constructor(private userService: UserService) { }
+    constructor() { }
 
-    ngOnInit(): void {
-        this.loading = true;
-        this.userService.read().pipe(first()).subscribe(users => {
-            this.loading = false;
-            this.users = users;
-        });
-    }
+    ngOnInit(): void { }
 }

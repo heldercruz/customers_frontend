@@ -55,9 +55,9 @@ export class AuthService extends GenericService<User>{
     console.log('login test');
     // return this.http.post<any>(`http://localhost:8080/authenticate`, { username, password })
     return this.http.post<any>(`${environment.apiUrl}/authenticate`, { username, password })
-        .pipe(map(token => {
-          super.initToken(token);
-          console.log(token);
+        .pipe(map(user => {
+          super.initToken(user);
+          console.log(user);
         }));
   }
 
