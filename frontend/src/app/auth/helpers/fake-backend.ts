@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-import { User } from '../user.model';
+import { Usuario } from '../usuario.model';
 
 
 
-const users: User[] = [{
+const users: Usuario[] = [{
   id: 1,
-  username: 'springuser',
+  username: 'springuserd',
   password: 'password',
-  profileId: null,
+  perfil: null,
 }];
 
 const token = 'fake-jwt-token';
@@ -60,7 +60,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         switch (true) {
             case url.endsWith('/authenticate') && method === 'POST':
                 return authenticate();
-            case url.endsWith('/user') && method === 'GET':
+            case url.endsWith('/usuario') && method === 'GET':
                 return getUsers();
             default:
                 // pass through any requests not handled above

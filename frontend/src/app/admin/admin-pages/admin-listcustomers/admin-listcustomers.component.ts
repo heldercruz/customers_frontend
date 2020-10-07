@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { UserService } from './../../user.service';
-import { User } from '../../../auth/user.model';
+import { Usuario } from '../../../auth/usuario.model';
 
 @Component({
   selector: 'app-admin-listcustomers',
@@ -11,15 +11,15 @@ import { User } from '../../../auth/user.model';
 export class AdminListcustomersComponent implements OnInit {
 
   loading = false;
-    users: User[];
+    usuarios: Usuario[];
 
     constructor(private userService: UserService) { }
 
     ngOnInit(): void {
         this.loading = true;
-        this.userService.read().pipe(first()).subscribe(users => {
+        this.userService.read().pipe(first()).subscribe(usuarios => {
             this.loading = false;
-            this.users = users;
+            this.usuarios = usuarios;
         });
     }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { User } from '../../auth/user.model';
+import { Usuario } from '../../auth/usuario.model';
 
 declare interface RouteInfo {
   path: string;
@@ -20,7 +20,7 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./admin-navbar.component.css']
 })
 export class AdminNavbarComponent implements OnInit {
-  currentUser: User;
+  currentUser: Usuario;
   public menuItems: any[];
   public isCollapsed = true;
 

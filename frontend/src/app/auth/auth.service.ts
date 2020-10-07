@@ -2,7 +2,7 @@ import { GenericService } from './../shared/generic.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { User } from './user.model';
+import { Usuario } from './usuario.model';
 import { environment } from '@environments/environment';
 
 /*
@@ -44,7 +44,7 @@ import { environment } from '@environments/environment';
 */
 
 @Injectable({ providedIn: 'root' })
-export class AuthService extends GenericService<User>{
+export class AuthService extends GenericService<Usuario>{
 
   constructor(http: HttpClient) {
     super(http, 'authenticate');

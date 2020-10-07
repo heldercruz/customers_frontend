@@ -3,7 +3,7 @@ import { take } from 'rxjs/operators';
 import { ReturnJson } from '../shared/return-json';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { User } from '../auth/user.model';
+import { Usuario } from '../auth/usuario.model';
 
 /*
   The "Generic Service" is a class created to provide a default service
@@ -12,18 +12,18 @@ import { User } from '../auth/user.model';
 export class GenericService<T> {
   constructor(protected http: HttpClient, private serviceEndpoint) {}
 
-  protected currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  protected currentUserSubject: BehaviorSubject<Usuario>;
+  public currentUser: Observable<Usuario>;
 
   protected createToken(): void {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(null)));
+    this.currentUserSubject = new BehaviorSubject<Usuario>(JSON.parse(localStorage.getItem(null)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   // store user details and jwt token in local storage to keep user logged in between page refreshes
-  protected initToken(user: User): void {
-    localStorage.setItem(user.token, JSON.stringify(user));
-    this.currentUserSubject.next(user);
+  protected initToken(usuario: Usuario): void {
+    localStorage.setItem(usuario.token, JSON.stringify(usuario));
+    this.currentUserSubject.next(usuario);
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -34,7 +34,7 @@ export class GenericService<T> {
      this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): Usuario {
     return this.currentUserSubject.value;
   }
 

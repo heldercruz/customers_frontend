@@ -82,7 +82,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { AlertModalService } from '../../shared/alert-modal.service';
-import { User } from '../user.model';
+import { Usuario } from '../usuario.model';
 
 @Component({
   selector: 'app-login',
