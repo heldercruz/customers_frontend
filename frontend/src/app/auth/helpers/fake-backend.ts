@@ -6,8 +6,8 @@ import { User } from '../user.model';
 
 const users: User[] = [{
   id: 1,
-  username: 'test',
-  password: 'test',
+  username: 'springuser',
+  password: 'password',
   cpfCnpj: '000000000000',
   firstName: 'Helder',
   lastName: 'Silva Cruz',

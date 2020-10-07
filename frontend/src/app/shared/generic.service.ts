@@ -38,24 +38,29 @@ export class GenericService<T> {
     return this.currentUserSubject.value;
   }
 
-  protected createTokenOptions(): any {
+ /* protected createTokenOptions(): any {
     return {headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem(null)}`)};
-  }
+  }*/
 
   public create(record: T): Observable<ReturnJson> {
-    const options = this.createTokenOptions();
-    options.headers = options.headers.append('Content-Type', 'application/json');
-    return this.http.post<ReturnJson>( `${environment.apiUrl}/${this.serviceEndpoint}`, record).pipe(take(1), options);
+   // const options = this.createTokenOptions();
+   // options.headers = options.headers.append('Content-Type', 'application/json');
+   // return this.http.post<ReturnJson>( `${environment.apiUrl}/${this.serviceEndpoint}`, record).pipe(take(1), options);
+    return this.http.post<ReturnJson>( `${environment.apiUrl}/${this.serviceEndpoint}`, record).pipe(take(1));
   }
 
   public remove(id: number): Observable<ReturnJson> {
-    return this.http.delete<ReturnJson>(
-      `${environment.apiUrl}/${this.serviceEndpoint}/${id}`).pipe(take(1), this.createTokenOptions());
+   /* return this.http.delete<ReturnJson>(
+      `${environment.apiUrl}/${this.serviceEndpoint}/${id}`).pipe(take(1), this.createTokenOptions());*/
+      return this.http.delete<ReturnJson>(
+        `${environment.apiUrl}/${this.serviceEndpoint}/${id}`).pipe(take(1));
   }
 
   public update(record: T): Observable<ReturnJson> {
-    return this.http.put<ReturnJson>(`${environment.apiUrl}/${this.serviceEndpoint}/${record['id']}`, record).pipe(
-           take(1), this.createTokenOptions());
+   /* return this.http.put<ReturnJson>(`${environment.apiUrl}/${this.serviceEndpoint}/${record['id']}`, record).pipe(
+           take(1), this.createTokenOptions());*/
+
+    return this.http.put<ReturnJson>(`${environment.apiUrl}/${this.serviceEndpoint}/${record['id']}`, record);
   }
 
   public read(id?: number): Observable<any>{
